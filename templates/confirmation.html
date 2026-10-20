@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="confirmation">
+
+    <h1>
+        Booking Confirmed!
+    </h1>
+
+    <p>
+        Your hotel booking has been successfully created.
+    </p>
+
+    <hr>
+
+    <p>
+        <strong>Booking ID:</strong>
+        {{ booking['id'] }}
+    </p>
+
+    <p>
+        <strong>Hotel:</strong>
+        {{ booking['hotel_name'] }}
+    </p>
+
+    <p>
+        <strong>Room:</strong>
+        {{ booking['room_type'] }}
+    </p>
+
+    <p>
+        <strong>Check-in:</strong>
+        {{ booking['check_in'] }}
+    </p>
+
+    <p>
+        <strong>Check-out:</strong>
+        {{ booking['check_out'] }}
+    </p>
+
+    <p>
+        <strong>Guests:</strong>
+        {{ booking['guests'] }}
+    </p>
+
+    <p>
+        <strong>Total:</strong>
+        ₹{{ booking['total_price'] }}
+    </p>
+
+    <a class="button"
+       href="{{ url_for('my_bookings') }}">
+
+        View My Bookings
+
+    </a>
+
+</div>
+
+{% endblock %}

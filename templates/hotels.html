@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2>
+        Hotels
+        {% if location %}
+            in {{ location }}
+        {% endif %}
+    </h2>
+
+    <form method="GET">
+
+        <input
+            type="text"
+            name="location"
+            placeholder="Search location"
+            value="{{ location }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    <div class="hotel-grid">
+
+        {% for hotel in hotels %}
+
+        <div class="hotel-card">
+
+            <img src="{{ hotel['image'] }}"
+                 alt="{{ hotel['name'] }}">
+
+            <h3>
+                {{ hotel['name'] }}
+            </h3>
+
+            <p>
+                Location: {{ hotel['location'] }}
+            </p>
+
+            <p>
+                Rating: ⭐ {{ hotel['rating'] }}
+            </p>
+
+            <a class="button"
+               href="{{ url_for('hotel_details',
+               hotel_id=hotel['id']) }}">
+
+                View Hotel
+
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <p>
+            No hotels available in this location.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="hotel-details">
+
+        <img src="{{ hotel['image'] }}"
+             alt="{{ hotel['name'] }}">
+
+        <h1>
+            {{ hotel['name'] }}
+        </h1>
+
+        <p>
+            📍 {{ hotel['location'] }}
+        </p>
+
+        <p>
+            ⭐ {{ hotel['rating'] }}
+        </p>
+
+        <p>
+            {{ hotel['description'] }}
+        </p>
+
+    </div>
+
+
+    <h2>Available Rooms</h2>
+
+    <div class="room-list">
+
+        {% for room in rooms %}
+
+        <div class="room-card">
+
+            <h3>
+                {{ room['room_type'] }}
+            </h3>
+
+            <p>
+                ₹{{ room['price'] }} per night
+            </p>
+
+            <a class="button"
+               href="{{ url_for('booking',
+               room_id=room['id']) }}">
+
+                Book This Room
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

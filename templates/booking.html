@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>
+        Book Your Room
+    </h2>
+
+    <h3>
+        {{ room['hotel_name'] }}
+    </h3>
+
+    <p>
+        Room: {{ room['room_type'] }}
+    </p>
+
+    <p>
+        Price: ₹{{ room['price'] }} per night
+    </p>
+
+
+    <form method="POST">
+
+        <label>
+            Check-in Date
+        </label>
+
+        <input
+            type="date"
+            name="check_in"
+            required
+        >
+
+
+        <label>
+            Check-out Date
+        </label>
+
+        <input
+            type="date"
+            name="check_out"
+            required
+        >
+
+
+        <label>
+            Number of Guests
+        </label>
+
+        <input
+            type="number"
+            name="guests"
+            min="1"
+            value="1"
+            required
+        >
+
+
+        <button type="submit">
+            Confirm Booking
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

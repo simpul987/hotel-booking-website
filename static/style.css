@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+
+/* NAVIGATION */
+
+nav {
+    background: #1f2937;
+    color: blue;
+}

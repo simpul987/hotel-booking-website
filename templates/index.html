@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Find Your Perfect Hotel</h1>
+
+    <p>
+        Search hotels by location and book your room.
+    </p>
+
+    <form action="{{ url_for('hotels') }}"
+          method="GET">
+
+        <input
+            type="text"
+            name="location"
+            placeholder="Enter location e.g. Puri"
+            value="{{ location }}"
+            required
+        >
+
+        <button type="submit">
+            Search Hotels
+        </button>
+
+    </form>
+
+</section>
+
+
+<section class="container">
+
+    <h2>Available Hotels</h2>
+
+    <div class="hotel-grid">
+
+        {% for hotel in hotels %}
+
+        <div class="hotel-card">
+
+            <img src="{{ hotel['image'] }}"
+                 alt="{{ hotel['name'] }}">
+
+            <h3>
+                {{ hotel['name'] }}
+            </h3>
+
+            <p>
+                📍 {{ hotel['location'] }}
+            </p>
+
+            <p>
+                ⭐ {{ hotel['rating'] }}
+            </p>
+
+            <p>
+                {{ hotel['description'] }}
+            </p>
+
+            <a class="button"
+               href="{{ url_for('hotel_details',
+               hotel_id=hotel['id']) }}">
+
+                View Details
+
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <p>
+            No hotels found.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
